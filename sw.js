@@ -2,22 +2,22 @@
 // Caches ONLY this app's own files (same origin, under the base path). It never touches
 // other hosts (the weather service is not cached here; the app keeps its own 1-hour cache),
 // and it stores no personal data: profile, clothes and photos live in the app's storage.
-const CACHE = 'wb-a2f2e185f424';
+const CACHE = 'wb-d5413182bbd0';
 const BASE = '';
 const PRECACHE = [
-  "/_expo/static/js/web/[id]-af8f7c41d13aefc5aab9396850ff2d6d.js",
-  "/_expo/static/js/web/[outfitId]-e295314a8a789c9d24efe61b7be040f3.js",
-  "/_expo/static/js/web/__common-65a2b2e265e28e33017cfbf70a8535ea.js",
+  "/_expo/static/js/web/[id]-05a14710171e05d11d022a287948d7f1.js",
+  "/_expo/static/js/web/[outfitId]-5f29b8cce11c138a2de1e03bdfd052a3.js",
+  "/_expo/static/js/web/__common-7628145a0c6ec9be1d663a252940adf9.js",
   "/_expo/static/js/web/__expo-metro-runtime-ed4c1cfa6193d76fc294130e42bd1916.js",
   "/_expo/static/js/web/_layout-18afc0b562fc5d176f150761db610b95.js",
-  "/_expo/static/js/web/_layout-fa4ef2a9a176725f24ee55e02b28a360.js",
-  "/_expo/static/js/web/entry-62bd620588a3ef118f42b5cf146af5f0.js",
-  "/_expo/static/js/web/index-e49e67c4b4f20edb7fad5fcfa7159dab.js",
-  "/_expo/static/js/web/me-685090908ea8224186fdba7cf3c5fe73.js",
-  "/_expo/static/js/web/onboarding-d5a232aa3ce699d4191056e75bcb9201.js",
-  "/_expo/static/js/web/parent-dc39213276230686f3bf15b14ac21a55.js",
-  "/_expo/static/js/web/wardrobe-d5d33247e4d6ddf4319553c2a3161ec4.js",
-  "/_expo/static/js/web/week-ff3701cda43ee244c55ea6957d42baf6.js",
+  "/_expo/static/js/web/_layout-1f3f9f54db49751ff5d6cd0eed936e27.js",
+  "/_expo/static/js/web/entry-44d2c65f4d7867056d44980648ff2b28.js",
+  "/_expo/static/js/web/index-64befb01c95a15df1a69a64c3b9cb215.js",
+  "/_expo/static/js/web/me-fcdf408bea26e4647ab3d5b820473c9d.js",
+  "/_expo/static/js/web/onboarding-ffe09781100a279ee3164668aea67576.js",
+  "/_expo/static/js/web/parent-78ec3cdea81249cf54bd0fd96539c6d6.js",
+  "/_expo/static/js/web/wardrobe-aba5119f611bb83154e4402b5e59e399.js",
+  "/_expo/static/js/web/week-e971e56a778326529a3bab459f328a39.js",
   "/apple-touch-icon.png",
   "/assets/node_modules/expo-router/assets/arrow_down.017bc6ba3fc25503e5eb5e53826d48a8.png",
   "/assets/node_modules/expo-router/assets/error.d1ea1496f9057eb392d5bbf3732a61b7.png",
