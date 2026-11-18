@@ -2,22 +2,20 @@
 // Caches ONLY this app's own files (same origin, under the base path). It never touches
 // other hosts (the weather service is not cached here; the app keeps its own 1-hour cache),
 // and it stores no personal data: profile, clothes and photos live in the app's storage.
-const CACHE = 'wb-d5413182bbd0';
+const CACHE = 'wb-d6e625f9e7b1';
 const BASE = '';
 const PRECACHE = [
-  "/_expo/static/js/web/[id]-05a14710171e05d11d022a287948d7f1.js",
-  "/_expo/static/js/web/[outfitId]-5f29b8cce11c138a2de1e03bdfd052a3.js",
-  "/_expo/static/js/web/__common-7628145a0c6ec9be1d663a252940adf9.js",
+  "/_expo/static/js/web/[id]-f8869f0fec3e421ed0511db120b8f4ce.js",
+  "/_expo/static/js/web/__common-e5f808e807599c60d5fa7058f5990d47.js",
   "/_expo/static/js/web/__expo-metro-runtime-ed4c1cfa6193d76fc294130e42bd1916.js",
-  "/_expo/static/js/web/_layout-18afc0b562fc5d176f150761db610b95.js",
-  "/_expo/static/js/web/_layout-1f3f9f54db49751ff5d6cd0eed936e27.js",
-  "/_expo/static/js/web/entry-44d2c65f4d7867056d44980648ff2b28.js",
-  "/_expo/static/js/web/index-64befb01c95a15df1a69a64c3b9cb215.js",
-  "/_expo/static/js/web/me-fcdf408bea26e4647ab3d5b820473c9d.js",
-  "/_expo/static/js/web/onboarding-ffe09781100a279ee3164668aea67576.js",
-  "/_expo/static/js/web/parent-78ec3cdea81249cf54bd0fd96539c6d6.js",
-  "/_expo/static/js/web/wardrobe-aba5119f611bb83154e4402b5e59e399.js",
-  "/_expo/static/js/web/week-e971e56a778326529a3bab459f328a39.js",
+  "/_expo/static/js/web/_layout-0ea46880e0796f65605533dbfefe6f9d.js",
+  "/_expo/static/js/web/_layout-c0050fbb1c1dcebd7da9620ef60e3755.js",
+  "/_expo/static/js/web/entry-e946ac1a55b33a150fb3ded7fc05434d.js",
+  "/_expo/static/js/web/index-01bb088442f08e443e7087bf002a3dfe.js",
+  "/_expo/static/js/web/me-39607714165686c86a34c054bc3157c1.js",
+  "/_expo/static/js/web/onboarding-0b23577907fc1553441db7ed497460a5.js",
+  "/_expo/static/js/web/parent-795dfba4cb897ab3c00bb66396664834.js",
+  "/_expo/static/js/web/wardrobe-a5f887c5ae702a87a4725455563d1375.js",
   "/apple-touch-icon.png",
   "/assets/node_modules/expo-router/assets/arrow_down.017bc6ba3fc25503e5eb5e53826d48a8.png",
   "/assets/node_modules/expo-router/assets/error.d1ea1496f9057eb392d5bbf3732a61b7.png",
@@ -45,6 +43,7 @@ const PRECACHE = [
   "/manifest.webmanifest",
   "/metadata.json"
 ];
+const POSE_CACHE = 'pose-page';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
@@ -78,6 +77,29 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== self.location.origin || !url.pathname.startsWith(BASE)) return;
+  // The offline pose page (D-064) loads in a hidden frame: hashed name, so cache it on first use.
+  if (req.destination === 'iframe' && /\/pose\.[0-9a-f]+\.html$/.test(url.pathname)) {
+    event.respondWith(
+      // Its own cache, outside the per-deploy "wb-" caches, so a new deploy doesn't mean another
+      // 6.8 MB download; only the newest pose page is kept. It holds no personal data.
+      caches.open(POSE_CACHE).then((c) =>
+        c.match(req).then(
+          (hit) =>
+            hit ||
+            fetch(req).then((res) => {
+              if (res.ok) {
+                const copy = res.clone();
+                c.keys()
+                  .then((keys) => Promise.all(keys.filter((k) => k.url !== req.url).map((k) => c.delete(k))))
+                  .then(() => c.put(req, copy));
+              }
+              return res;
+            }),
+        ),
+      ),
+    );
+    return;
+  }
   if (req.mode === 'navigate') {
     // App pages: network first (to get updates), the cached app shell when offline.
     event.respondWith(withTimeout(fetch(req), 3000).catch(() => caches.match(BASE + '/index.html')));
