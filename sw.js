@@ -2,16 +2,16 @@
 // Caches ONLY this app's own files (same origin, under the base path). It never touches
 // other hosts (the weather service is not cached here; the app keeps its own 1-hour cache),
 // and it stores no personal data: profile, clothes and photos live in the app's storage.
-const CACHE = 'wb-d6e625f9e7b1';
+const CACHE = 'wb-d80bd9dc4d58';
 const BASE = '';
 const PRECACHE = [
   "/_expo/static/js/web/[id]-f8869f0fec3e421ed0511db120b8f4ce.js",
-  "/_expo/static/js/web/__common-e5f808e807599c60d5fa7058f5990d47.js",
+  "/_expo/static/js/web/__common-afe53bd7fd94af758c2dc91e6c32d954.js",
   "/_expo/static/js/web/__expo-metro-runtime-ed4c1cfa6193d76fc294130e42bd1916.js",
   "/_expo/static/js/web/_layout-0ea46880e0796f65605533dbfefe6f9d.js",
   "/_expo/static/js/web/_layout-c0050fbb1c1dcebd7da9620ef60e3755.js",
-  "/_expo/static/js/web/entry-e946ac1a55b33a150fb3ded7fc05434d.js",
-  "/_expo/static/js/web/index-01bb088442f08e443e7087bf002a3dfe.js",
+  "/_expo/static/js/web/entry-e4a956416bb0aba6c558ff9b6876cd4e.js",
+  "/_expo/static/js/web/index-c893ddd7b02da6e114b77091b760a4bf.js",
   "/_expo/static/js/web/me-39607714165686c86a34c054bc3157c1.js",
   "/_expo/static/js/web/onboarding-0b23577907fc1553441db7ed497460a5.js",
   "/_expo/static/js/web/parent-795dfba4cb897ab3c00bb66396664834.js",
