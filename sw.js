@@ -2,20 +2,20 @@
 // Caches ONLY this app's own files (same origin, under the base path). It never touches
 // other hosts (the weather service is not cached here; the app keeps its own 1-hour cache),
 // and it stores no personal data: profile, clothes and photos live in the app's storage.
-const CACHE = 'wb-d80bd9dc4d58';
+const CACHE = 'wb-74128972295f';
 const BASE = '';
 const PRECACHE = [
-  "/_expo/static/js/web/[id]-f8869f0fec3e421ed0511db120b8f4ce.js",
-  "/_expo/static/js/web/__common-afe53bd7fd94af758c2dc91e6c32d954.js",
+  "/_expo/static/js/web/[id]-7e9d94311897a68e9ce5160050e3c0ce.js",
+  "/_expo/static/js/web/__common-e767c1621719cf762bddeba5305ce0a7.js",
   "/_expo/static/js/web/__expo-metro-runtime-ed4c1cfa6193d76fc294130e42bd1916.js",
-  "/_expo/static/js/web/_layout-0ea46880e0796f65605533dbfefe6f9d.js",
-  "/_expo/static/js/web/_layout-c0050fbb1c1dcebd7da9620ef60e3755.js",
-  "/_expo/static/js/web/entry-e4a956416bb0aba6c558ff9b6876cd4e.js",
-  "/_expo/static/js/web/index-c893ddd7b02da6e114b77091b760a4bf.js",
-  "/_expo/static/js/web/me-39607714165686c86a34c054bc3157c1.js",
-  "/_expo/static/js/web/onboarding-0b23577907fc1553441db7ed497460a5.js",
-  "/_expo/static/js/web/parent-795dfba4cb897ab3c00bb66396664834.js",
-  "/_expo/static/js/web/wardrobe-a5f887c5ae702a87a4725455563d1375.js",
+  "/_expo/static/js/web/_layout-41312077d7641036fdd3075c2c2917f4.js",
+  "/_expo/static/js/web/_layout-423e5a848abd084fdef207bb96a3b913.js",
+  "/_expo/static/js/web/entry-6b44acb3b6c416a5424a0e9f9937e2bb.js",
+  "/_expo/static/js/web/index-450d0b35ad2c3c53d0378edfa282fd6a.js",
+  "/_expo/static/js/web/me-8581d198b10c99d39bd85fc540598f4c.js",
+  "/_expo/static/js/web/onboarding-aeb1a7df9706c803297d5f9e24f41fd2.js",
+  "/_expo/static/js/web/parent-ab11df1103e40dda6452e694ab01c975.js",
+  "/_expo/static/js/web/wardrobe-0e779c1b72e2ac5bb87916bd6c8e12b0.js",
   "/apple-touch-icon.png",
   "/assets/node_modules/expo-router/assets/arrow_down.017bc6ba3fc25503e5eb5e53826d48a8.png",
   "/assets/node_modules/expo-router/assets/error.d1ea1496f9057eb392d5bbf3732a61b7.png",
